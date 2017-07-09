@@ -44,19 +44,21 @@ time= ncvar_get(nc, "time")
 
 par(mfrow=c(1,2))
 promSST = apply(sst, MARGIN=c(1,2), FUN = mean, na.rm=TRUE)
-image.plot(lon, lat, promSST, las=1, xlab="LONGITUD", ylab="LATITUD", main="a)SST promedio 1959-2004")
+image.plot(lon, lat, promSST, las=1, xlab="LONGITUD", ylab="LATITUD", main="a")
 map(add=TRUE, fill=FALSE, col="black")
 
 SST1=sst[,,262:274]
 promSST1 = apply(SST1, MARGIN=c(1,2), FUN = mean, na.rm=TRUE)
 SSTCUM=promSST-promSST1
 
-image.plot(lon, lat, SSTCUM, las=1,xlab="", ylab="", main="a)SST anomala")
+image.plot(lon, lat, SSTCUM, las=1,xlab="", ylab="", main="b")
 map(add=TRUE, fill=FALSE, col="black")
 
 ```
 
 
+La temperatura en 1978 se incremento 1 °C
+En la figura 2, comparamos 
 ## Conclusiones
 
 ## Referencias
