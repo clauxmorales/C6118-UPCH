@@ -1,32 +1,38 @@
 ---
-title: "IMPORTANCIA DEL MONITOREO DE LA TEMPERATURA SUPERFICIAL DEL PACIFICO TROPICAL"
+title: "IMPORTANCIA DEL MONITOREO DE LA TEMPERATURA SUPERFICIAL DEL MAR EN EL PACIFICO ECUATORIAL"
 author: "Claudia Morales"
 output: html_document
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
+---
 ```{r packages, echo=FALSE, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(ncdf4)
 library(fields)
-#install.packages("devtools")
-#devtools::install_github("roliveros-ramos/kali")
 library(kali)
 ```
-## Introducción
-El netCDF (formulario de datos comunes en red) es un formato de archivo destinado a almacenar datos científicos multidimensionales (variables) como la temperatura, la humedad, la presión, la velocidad del viento y la dirección. 
 
-El objetivo de este estudio es demostrar a traves de figuras de temperatura superficial del mar (SST) en años Niño y en otros que no lo fueron la relevancia del monitoreo de la SST.
+## Introducción
+En la actualidad, la comunidad científica considera al fenómeno El Niño como parte de un mecanismo de interacción océano-atmósfera en el Pacífico Ecuatorial (PE) que tiene repercusiones climáticas a nivel mundial. Un concepto físico aceptado por los científicos establece que el PE conserva un equilibrio entre las aguas frías del Este y las aguas calientes del Oeste. Esta diferencia mantiene un viento con dirección Oeste que provoca el efecto afloramiento ecuatorial en el extremo Este, como consecuencia se tiene bajas temperaturas en dicha región. El equilibrio se rompe cuando, por algún motivo, los vientos hacia el Oeste se debilitan ocasionando la aparición de ondas ecuatoriales, conocidas como ondas de Kelvin. Estas ondas atraviesen el PE hundiendo las isotermas a lo largo de su trayectoria, por lo que provoca un calentamiento en el Centro y extremo Oriental del Pacífico [1].  
+
+La temperatura de la superficie del mar (TSM) es una de las principales variables climáticas y es esencial para el pronóstico a escala interanual, ya que determina en gran parte el estado instantáneo de la atmósfera, por ejemplo modulando la probabilidad de lluvias intensas en la costa de Perú, pero también porque es resultado de la dinámica oceánica lenta que es la que permite las predicciones con meses de anticipación (la atmósfera por sí sola no tiene “memoria”) [2].
+
+El formato NetCDF (Network Common Data Format) fue creado por UNIDATA como formato estándar para que sea usado en algunos de sus softwares que ofrece a la comunidad científica. La característica de este formato que contiene la suficiente información para poder saber qué clase de data se encuentra en el archivo (tipo de variable, unidades, dimensiones, institución que la creo, etc)[3]. 
+
+El objetivo de este estudio fue el de demostrar la relevancia del monitoreo de la temperatura superficial del mar (TSM) en el Pacifico Ecuatorial, en años Niño y en otros que no lo fueron, mediante figuras elaboradas en el programa R con una base de datos netCDF; además, analizaremos otros parámetros como los de salinidad, pH, lphy y sphy en dichas condiciones. 
 
 ## Materiales y métodos
-La metadata del archivo netCFD utilizado en este trabajo tiene las siguientes variables: longitud, latitud, zt_ocean, tiempo y temperatura superficial del mar. 
-Utilizando el programa R, elaboramos figuras de la temperatura superficial del mar en años Niño y en otros que no fueron considerados como tal.
+La metadata del archivo netCFD utilizado en este trabajo tiene las siguientes variables: longitud, latitud, tiempo, temperatura superficial del mar, salinidad, pH, lphy y sphy. 
+
+Utilizando el programa R, elaboramos figuras con las variables antes mencionadas en años Niño y en otros que no fueron considerados como tal. Las anomalías se calcularán usando la climatología mensual calculada para el periodo base 1959-2004.
 
 ## Resultados y discusión
+En la figura 1, podemos observar
 
-```{r check, echo=FALSE, fig.width=4, fig.height=4, fig.cap="Ejemplo del uso de la función kali::image.plot"}
+
+```{r echo=FALSE, fig.width=10, fig.cap="**Figura 1:Temperatura superficial del mar a) promedio periodo 1959-2004 y b) su anomalía para el año de mi nacimiento**"}
 library(ncdf4)
 library(fields)
 library(kali)
@@ -34,11 +40,28 @@ nc = nc_open("datos/sst.nc4")
 sst = ncvar_get(nc, "to")
 lat = ncvar_get(nc, "latitude")
 lon = ncvar_get(nc, "longitude") - 360
-image.map(lon, lat, sst[,,1])
+time= ncvar_get(nc, "time")
+
+par(mfrow=c(1,2))
+promSST = apply(sst, MARGIN=c(1,2), FUN = mean, na.rm=TRUE)
+image.plot(lon, lat, promSST, las=1, xlab="LONGITUD", ylab="LATITUD", main="a)SST promedio 1959-2004")
+map(add=TRUE, fill=FALSE, col="black")
+
+SST1=sst[,,262:274]
+promSST1 = apply(SST1, MARGIN=c(1,2), FUN = mean, na.rm=TRUE)
+SSTCUM=promSST-promSST1
+
+image.plot(lon, lat, SSTCUM, las=1,xlab="", ylab="", main="a)SST anomala")
+map(add=TRUE, fill=FALSE, col="black")
+
 ```
+
 
 ## Conclusiones
 
 ## Referencias
 
+1. Investigación para la Prevención de Desastres en Variabilidad y Cambio Climático. El Niño en el Perú. Recuperado de: http://www.met.igp.gob.pe/variabclim/nino_peru.html
+2. Takahashi, K.(2017). Estimación de la distribución de la temperatura superficial del mar. Boletín Técnico "Generación de modelos climáticos para el pronóstico de la ocurrencia del Fenómeno El Niño". Instituto Geofísico del Perú, Febrero 4(2):8-10.
+3. Mosquera, K. A.(08 de Mayo del 2006).El formato NetCDF.Recuperado de:http://www.met.igp.gob.pe/users/kobi/NETCDF/
 
