@@ -53,8 +53,8 @@ lat = ncvar_get(nc, "latitude")
 lon = ncvar_get(nc, "longitude") - 360
 time= ncvar_get(nc, "time")
 
-hov1 = apply(sst, MARGIN=c(2,3), FUN = mean, na.rm=TRUE, xlab="TIEMPO (MESES)", ylab="LATITUD")
-image.plot(time, lat, t(hov1), las=1)
+hov1 = apply(sst, MARGIN=c(2,3), FUN = mean, na.rm=TRUE)
+image.plot(time, lat, t(hov1), las=1, xlab="TIEMPO (MESES)", ylab="LATITUD")
 rect(228, -22, 240, 7, border="black", lwd=6)
 rect(276, -22, 288, 7, border="black", lwd=6)
 rect(456, -22, 468, 7, border="black", lwd=6)
@@ -65,7 +65,7 @@ rect(456, -22, 468, 7, border="black", lwd=6)
 
 La temperatura de la superficie del mar (TSM) es una de las principales variables climáticas y es esencial para el pronóstico a escala interanual, ya que determina en gran parte el estado instantáneo de la atmósfera, por ejemplo modulando la probabilidad de lluvias intensas en la costa de Perú, pero también porque es resultado de la dinámica oceánica lenta que es la que permite las predicciones con meses de anticipación (la atmósfera por sí sola no tiene “memoria”)[4].
 
-Otra parámetro no evaluado en este trabajo es la presencia de las ondas Kelvin a traves de la profundizacion de la isoterma de 20°C, aproximadamente en el centro de la termoclina;la intensidad o debilitamiento de las ondas Kelvin coincide con las anomalías de la TSM. 
+Otra parámetro no evaluado en este trabajo es la presencia de las ondas Kelvin a través de la profundizacion de la isoterma de 20°C, aproximadamente en el centro de la termoclina;la intensidad o debilitamiento de las ondas Kelvin coincide con las anomalías de la TSM. 
 
 La salinidad superficial del mar en los períodos evaluados se mantuvieron similar al promedio base; esto es más notorio a lo largo de la costa peruana y en el Ecuador es donde se aprecia un ligero cambio. En eventos Niño, la distribución vertical tanto de la temperatura y de la salinidad es afectada, tal como sucedió en 1997 donde la salinidad aumentó casi linealmente desde 34 usp en la superficie, hasta 34.7 usp en el nivel de 150m [6]. 
 
@@ -102,14 +102,14 @@ map(add=TRUE, fill=FALSE, col="black")
 SSS97=sss[,,456:468]
 promSSS97 = apply(SSS97, MARGIN=c(1,2), FUN = mean, na.rm=TRUE)
 SSSAN97=promSSS-promSSS97
-image.plot(lon, lat, SSSAN97, las=1,xlab="", ylab="", main="d")
+image.plot(lon, lat, SSSAN97, las=1,xlab="LONGITUD", ylab="", main="d")
 map(add=TRUE, fill=FALSE, col="black")
 box()
 ```
 
 
 
-La producción vertical integral generada por fitoplancton pequeños es comparada en los períodos evaluados anteriormente.
+La producción vertical integral generada por fitoplancton pequeños es medida a través de la clorofila. El patrón espacial promedio de la Clo-a está influido por procesos físico-químicos, como el movimiento de las masas de agua, disponibilidad de nutrientes, cantidad y calidad de radiación solar que llega a la columna de agua, la temperatura y por agentes biológicos, como reproducción diferencial, pastoreo y la historia taxonómica de la comunidad fitoplanctónica [7]. En 1978-1979 (considerado como La Niña), la produccion fitoplactónica es similar al promedio y se aprecia en la figura que la clorofila se encuentra distribuida uniformemente a lo largo de la costa peruana concentrandose en el Ecuador; debido que al encontrase en una zona de afloramiento, esto favorece el ascenso de nutrientes a capa de mezcla, uno de los elementos clave que se obtiene a través de este proceso físico es el hierro que es esencial en la fotosíntesis. En ambos eventos Niño, la clorofila es menor que el promedio; si bien en un inicio se darán las condiciones óptimas para la fotosísntesis, la productividad primaria se incrementará generando mayor cantidad de materia orgánica y sumando la profundización de la capa de mezcla no habrá una adecuada remineralización que permita el reciclaje de los nutrientes. Lo que finalmente traerá como consecuencia la muerte celular.
 
 ```{r echo=FALSE, fig.width=12, fig.height=10, fig.cap="**Figura 3: Produccion vegetal integral (fitoplancton pequeño) en el a)promedio período 1959-2004, anomalía de b)mi primer año de vida (1978-1979), c)período 1982-1983 y b) períodeo 1997-1998**"}
 library(ncdf4)
@@ -141,16 +141,15 @@ map(add=TRUE, fill=FALSE, col="black")
 SPH97=sph[,,456:468]
 promSPH97 = apply(SPH97, MARGIN=c(1,2), FUN = mean, na.rm=TRUE)
 SPHAN97=promSPH-promSPH97
-image.plot(lon, lat, SPHAN97, las=1,xlab="", ylab="", main="d")
+image.plot(lon, lat, SPHAN97, las=1,xlab="LONGITUD", ylab="", main="d")
 map(add=TRUE, fill=FALSE, col="black")
 box()
 ```
 
 
+La producción vertical integral generada por fitoplancton grande entre 1978-1979 es menor que el promedio base, y esta diferencia se hace más evidente en las figuras de los eventos extraordinario del Niño. En el caso de 1997-1998, se observó un incremento de produccion primaria pero esta se dió alejado de la costa. 
 
-La producción vertical integral generada por fitoplancton pequeños es comparada en los períodos evaluados anteriormente.
-
-```{r echo=FALSE, fig.width=12, fig.height=10, fig.cap="**Figura 4: Produccion vegetal integral (fitoplancton grande) en el a)promedio período 1959-2004, anomalía de b)mi primer año de vida (1978-1979), c)período 1982-1983 y b) períodeo 1997-1998**"}
+```{r echo=FALSE, fig.width=12, fig.height=10, fig.cap="**Figura 4: Producción vegetal integral (fitoplancton grande) en el a)promedio período 1959-2004, anomalía de b)mi primer año de vida (1978-1979), c)período 1982-1983 y b) períodeo 1997-1998**"}
 library(ncdf4)
 library(fields)
 library(kali)
@@ -180,7 +179,7 @@ map(add=TRUE, fill=FALSE, col="black")
 LPH97=lph[,,456:468]
 promLPH97 = apply(LPH97, MARGIN=c(1,2), FUN = mean, na.rm=TRUE)
 LPHAN97=promLPH-promLPH97
-image.plot(lon, lat, LPHAN97, las=1,xlab="", ylab="", main="d")
+image.plot(lon, lat, LPHAN97, las=1,xlab="LONGITUD", ylab="", main="d")
 map(add=TRUE, fill=FALSE, col="black")
 ```
 
@@ -188,11 +187,13 @@ map(add=TRUE, fill=FALSE, col="black")
 
 ## Conclusiones
 
-La temperatura superficial del mar en mi primer año de vida (1978), indicó que no se trataba de un año Niño sino todo o contrario. 
+La temperatura superficial del mar en mi primer año de vida (1978), indicó que no se trataba de un año Niño sino todo o contrario. La TSM, ha demostrado ser un parametro que influye en aspectos biologicos en el oceóno.
 
-A nivel superficial, la salinidad es similar a lo largo de la costa peruana en ambas etapas tanto de Niño como de Nina (1978).
+A nivel superficial, la salinidad es similar a lo largo de la costa peruana en ambas etapas tanto de El Niño como de La Nina (1978).La salinidad superficial no es afectada drásticamente por el aumento de la temperatura de la superficie del mar.
 
-El monitoreo constante ayuda a enteder el comportamiento del mar, relacionar parametros físicos, quimicos y biologicos con el evento lo que conlleva a un .   
+La productividad primaria en 1978 no se ve afectadad ya que sus valores son similares al del promedio.
+
+El monitoreo constante de distintos parámetros físicos, químicos y biológicos ayuda a comprender como los diversos fenomenos influyen positva o negativamente en un ecosistema.
 
 ## Referencias
 1. Takahashi, K., K. Mosquera y J. Reupo. (2014). El Índice Costero El Niño (ICEN): historia y actualización. Boletín Técnico "Generación de modelos climáticos para el pronóstico de la ocurrencia del Fenómeno El Niño", Instituto Geofísico del Perú, Febrero, 1(2):8-9.
@@ -201,4 +202,4 @@ El monitoreo constante ayuda a enteder el comportamiento del mar, relacionar par
 4. Takahashi, K.(2017). Estimación de la distribución de la temperatura superficial del mar. Boletín Técnico "Generación de modelos climáticos para el pronóstico de la ocurrencia del Fenómeno El Niño". Instituto Geofísico del Perú, Febrero 4(2):8-10.
 5.Comité Técnico del Estudio Nacional del Fenómeno El Niño (ENFEN).(Lima, 9 de abril del 2012). Definición operacional de los eventos El Niño y la Niña y sus magnitudes en la costa del Perú. Recuperado de: http://www.imarpe.pe/imarpe/archivos/informes/imarpe_comenf_not_tecni_enfen_09abr12.pdf
 6.Trasviña, A. Lluch, D., Filonov, A., y A. Gallegos. Oceanografia y el Niño. Disponible en:http://www.atmosfera.unam.mx/editorial/libros/el_nino/cap3.pdf
-
+7. Pérez-Arvizu, Esteban M, Aragón-Noriega, E. Alberto, & Espinosa-Carreón, T. Leticia. (2013). Variabilidad estacional de la clorofila a y su respuesta a condiciones El Niño y La Niña en el Norte del Golfo de California. Revista de biología marina y oceanografía, 48(1), 131-141. https://dx.doi.org/10.4067/S0718-19572013000100011
