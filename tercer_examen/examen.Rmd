@@ -38,12 +38,12 @@ El diagrama de Hovmoller lo empleamos para representarla temperatura superficial
 
 ## Resultados y discusión
 
-En la figura 1, comparamos la temperatura de la superficie del mar durante el período base 1959-2004 con el primer año de mi vida (a) y los dos eventos denominados extraordinarios de 1982-1983 (b) y de 1997-1998 (c), los cuales tuvieron una duración de 17 y 19 meses respectivamente[5].
+En la figura 1, comparamos la temperatura de la superficie del mar durante el período base 1959-2004 con el primer año de mi vida (a) y los dos eventos denominados extraordinarios de 1982-1983 (b) y de 1997-1998 (c), los cuales tuvieron una duración de 17 y 19 meses respectivamente[4].
 
 Al evaluar las condiciones físicas de la superficie del mar observamos en los dos últimos rectangulos negros, que corresponden a los eventos Niño ya mencionados, una notable intensidad térmica (23C aprox.) que avanza mas allá de los 10 LS. Por el contrario, en el año 1978 se aprecia que las aguas oscilaban los 20C e incluso el Comité Técnico del Estudio NAcional del Fenómeno del Niño (ENFEN) lo catalogaron como Niña débil. 
 
 
-```{r echo=FALSE, fig.width=10, fig.height=8, fig.cap="**Figura 1:Temperatura de la superficie del mar a)promedio del período 1959-2004, anomalía de b)mi primer año de vida (1978-1979), c)período 1982-1983 y b) períodeo 1997-1998**"}
+```{r echo=FALSE, fig.width=8, fig.height=6, fig.cap="**Figura 1:Temperatura de la superficie del mar a)promedio del período 1959-2004, anomalía de b)mi primer año de vida (1978-1979), c)período 1982-1983 y b) período 1997-1998**"}
 library(ncdf4)
 library(fields)
 library(kali)
@@ -63,7 +63,7 @@ rect(456, -22, 468, 7, border="black", lwd=6)
 
 
 
-La temperatura de la superficie del mar (TSM) es una de las principales variables climáticas y es esencial para el pronóstico a escala interanual, ya que determina en gran parte el estado instantáneo de la atmósfera, por ejemplo modulando la probabilidad de lluvias intensas en la costa de Perú, pero también porque es resultado de la dinámica oceánica lenta que es la que permite las predicciones con meses de anticipación (la atmósfera por sí sola no tiene “memoria”)[4].
+La temperatura de la superficie del mar (TSM) es una de las principales variables climáticas y es esencial para el pronóstico a escala interanual, ya que determina en gran parte el estado instantáneo de la atmósfera, por ejemplo modulando la probabilidad de lluvias intensas en la costa de Perú, pero también porque es resultado de la dinámica oceánica lenta que es la que permite las predicciones con meses de anticipación (la atmósfera por sí sola no tiene “memoria”)[5].
 
 Otra parámetro no evaluado en este trabajo es la presencia de las ondas Kelvin a través de la profundizacion de la isoterma de 20°C, aproximadamente en el centro de la termoclina;la intensidad o debilitamiento de las ondas Kelvin coincide con las anomalías de la TSM. 
 
@@ -111,7 +111,7 @@ box()
 
 La producción vertical integral generada por fitoplancton pequeños es medida a través de la clorofila. El patrón espacial promedio de la Clo-a está influido por procesos físico-químicos, como el movimiento de las masas de agua, disponibilidad de nutrientes, cantidad y calidad de radiación solar que llega a la columna de agua, la temperatura y por agentes biológicos, como reproducción diferencial, pastoreo y la historia taxonómica de la comunidad fitoplanctónica [7]. En 1978-1979 (considerado como La Niña), la produccion fitoplactónica es similar al promedio y se aprecia en la figura que la clorofila se encuentra distribuida uniformemente a lo largo de la costa peruana concentrandose en el Ecuador; debido que al encontrase en una zona de afloramiento, esto favorece el ascenso de nutrientes a capa de mezcla, uno de los elementos clave que se obtiene a través de este proceso físico es el hierro que es esencial en la fotosíntesis. En ambos eventos Niño, la clorofila es menor que el promedio; si bien en un inicio se darán las condiciones óptimas para la fotosísntesis, la productividad primaria se incrementará generando mayor cantidad de materia orgánica y sumando la profundización de la capa de mezcla no habrá una adecuada remineralización que permita el reciclaje de los nutrientes. Lo que finalmente traerá como consecuencia la muerte celular.
 
-```{r echo=FALSE, fig.width=12, fig.height=10, fig.cap="**Figura 3: Produccion vegetal integral (fitoplancton pequeño) en el a)promedio período 1959-2004, anomalía de b)mi primer año de vida (1978-1979), c)período 1982-1983 y b) períodeo 1997-1998**"}
+```{r echo=FALSE, fig.width=12, fig.height=10, fig.cap="**Figura 3: Produccion vegetal integral (fitoplancton pequeño) en el a)promedio período 1959-2004, anomalía de b)mi primer año de vida (1978-1979), c)período 1982-1983 y b) período 1997-1998**"}
 library(ncdf4)
 library(fields)
 library(kali)
@@ -149,7 +149,7 @@ box()
 
 La producción vertical integral generada por fitoplancton grande entre 1978-1979 es menor que el promedio base, y esta diferencia se hace más evidente en las figuras de los eventos extraordinario del Niño. En el caso de 1997-1998, se observó un incremento de produccion primaria pero esta se dió alejado de la costa. 
 
-```{r echo=FALSE, fig.width=12, fig.height=10, fig.cap="**Figura 4: Producción vegetal integral (fitoplancton grande) en el a)promedio período 1959-2004, anomalía de b)mi primer año de vida (1978-1979), c)período 1982-1983 y b) períodeo 1997-1998**"}
+```{r echo=FALSE, fig.width=12, fig.height=10, fig.cap="**Figura 4: Producción vegetal integral (fitoplancton grande) en el a)promedio período 1959-2004, anomalía de b)mi primer año de vida (1978-1979), c)período 1982-1983 y b) período 1997-1998**"}
 library(ncdf4)
 library(fields)
 library(kali)
@@ -199,7 +199,7 @@ El monitoreo constante de distintos parámetros físicos, químicos y biológico
 1. Takahashi, K., K. Mosquera y J. Reupo. (2014). El Índice Costero El Niño (ICEN): historia y actualización. Boletín Técnico "Generación de modelos climáticos para el pronóstico de la ocurrencia del Fenómeno El Niño", Instituto Geofísico del Perú, Febrero, 1(2):8-9.
 2. Investigación para la Prevención de Desastres en Variabilidad y Cambio Climático. El Niño en el Perú. Recuperado de: http://www.met.igp.gob.pe/variabclim/nino_peru.html
 3. Mosquera, K. A.(08 de Mayo del 2006).El formato NetCDF.Recuperado de:http://www.met.igp.gob.pe/users/kobi/NETCDF/
-4. Takahashi, K.(2017). Estimación de la distribución de la temperatura superficial del mar. Boletín Técnico "Generación de modelos climáticos para el pronóstico de la ocurrencia del Fenómeno El Niño". Instituto Geofísico del Perú, Febrero 4(2):8-10.
-5.Comité Técnico del Estudio Nacional del Fenómeno El Niño (ENFEN).(Lima, 9 de abril del 2012). Definición operacional de los eventos El Niño y la Niña y sus magnitudes en la costa del Perú. Recuperado de: http://www.imarpe.pe/imarpe/archivos/informes/imarpe_comenf_not_tecni_enfen_09abr12.pdf
+4.Comité Técnico del Estudio Nacional del Fenómeno El Niño (ENFEN).(Lima, 9 de abril del 2012). Definición operacional de los eventos El Niño y la Niña y sus magnitudes en la costa del Perú. Recuperado de: http://www.imarpe.pe/imarpe/archivos/informes/imarpe_comenf_not_tecni_enfen_09abr12.pdf
+5. Takahashi, K.(2017). Estimación de la distribución de la temperatura superficial del mar. Boletín Técnico "Generación de modelos climáticos para el pronóstico de la ocurrencia del Fenómeno El Niño". Instituto Geofísico del Perú, Febrero 4(2):8-10.
 6.Trasviña, A. Lluch, D., Filonov, A., y A. Gallegos. Oceanografia y el Niño. Disponible en:http://www.atmosfera.unam.mx/editorial/libros/el_nino/cap3.pdf
 7. Pérez-Arvizu, Esteban M, Aragón-Noriega, E. Alberto, & Espinosa-Carreón, T. Leticia. (2013). Variabilidad estacional de la clorofila a y su respuesta a condiciones El Niño y La Niña en el Norte del Golfo de California. Revista de biología marina y oceanografía, 48(1), 131-141. https://dx.doi.org/10.4067/S0718-19572013000100011
